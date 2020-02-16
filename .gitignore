@@ -338,3 +338,12 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+.qmake.stash
+
+Makefile
+
+moc_MyApi.cpp
+
+moc_predefs.h
+
+qrc_CookieCutter.cpp

@@ -2,10 +2,15 @@ Cookie Cutter - quick image cutouts
 (c) 2020 Niels Sönke Seidler
 
 This software is licensed under the GPL v3
-see included file 'gpl-3.0.txt'
-or online at 'https://www.gnu.org/licenses/gpl-3.0'
+see included file gpl-3.0.txt
+or online at https://www.gnu.org/licenses/gpl-3.0
 source: https://github.com/Inverse404/CookieCutter
 
 Uses Qt 5.13 or compatible under GPL licensing
 see https://doc.qt.io/qt-5/licensing.html
 source: git://code.qt.io/qt/qt5.git
+
+Uses an icon from the Material Design icon theme
+under Apache license v 2.0 
+see: https://www.apache.org/licenses/LICENSE-2.0.html
+source: https://material.io/resources/icons/?style=baseline

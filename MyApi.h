@@ -3,6 +3,12 @@
 #include <QImage>
 #include <QUrl>
 
+#ifdef Q_OS_WIN
+#define REMOVE_FILE_PROTOCOL_PREFIX "\"file:///\""
+#else
+#define REMOVE_FILE_PROTOCOL_PREFIX "\"file://\""
+#endif
+
 class MyApi : public QObject
 {
 	Q_OBJECT
@@ -11,9 +17,9 @@ public:
 	MyApi(MyApi const& other) : QObject() {};
 	Q_INVOKABLE void saveCookie(QString const& sourcePath, QString const& targetPath, int x, int y, int w, int h, bool rescale = false, int outW = 0, int outH = 0) {
 		QString localInPath = sourcePath;
-		localInPath.remove("file:///");
+        localInPath.remove("file://");
 		QString localOutPath = targetPath;
-		localOutPath.remove("file:///");
+        localOutPath.remove("file://");
 		QImage source(localInPath);
 		if (!source.isNull()) {
 			QImage cookie = source.copy(x, y ,w, h);

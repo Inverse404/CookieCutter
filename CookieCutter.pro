@@ -4,8 +4,9 @@
 
 TEMPLATE = app
 TARGET = CookieCutter
-DESTDIR = ./x64/Release
+DESTDIR = ./x64/Debug
 CONFIG += release
+QT += core gui qml quick widgets
 LIBS += -L"."
 DEPENDPATH += .
 MOC_DIR += .

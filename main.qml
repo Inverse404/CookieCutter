@@ -4,7 +4,8 @@ import QtQml 2.13
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.13
-import QtQuick.Dialogs 1.3
+//import QtQuick.Dialogs 1.3
+import Qt.labs.platform 1.1
 import Qt.labs.settings 1.0
 
 ApplicationWindow {
@@ -23,6 +24,9 @@ ApplicationWindow {
 	property bool	useCustomOutputSize:		swUseCustomOutputSize.checked && tfCustomOutputWidth.acceptableInput && tfCustomOutputHeight.acceptableInput
 	property int	customOutputWidth:			tfCustomOutputWidth.acceptableInput ? parseFloat(tfCustomOutputWidth.text) : 1
 	property int	customOutputHeight:			tfCustomOutputHeight.acceptableInput ? parseFloat(tfCustomOutputHeight.text) : 1
+
+	property string lastOpenFolder:				""
+	property string lastSaveFolder:				""
 
     visible: true
     title: qsTr("CookieCutter")
@@ -132,6 +136,14 @@ ApplicationWindow {
 							saveDialog.cookieY = cookieY;
 							saveDialog.cookieW = cookieW;
 							saveDialog.cookieH = cookieH;
+
+							var sourceFilenameExtensionIndex = app.currentImageSource.lastIndexOf(".");
+							var sourceFilepathDirectoryEndIndex = app.currentImageSource.lastIndexOf("/");
+							var sourceFilenameWithoutExtension = app.currentImageSource.substring(sourceFilepathDirectoryEndIndex + 1, sourceFilenameExtensionIndex);
+							var sourceFileExtension = app.currentImageSource.substring(sourceFilenameExtensionIndex);
+							var suggestedSaveFileName = "file://" + sourceFilenameWithoutExtension + "_" + app.currentCookieWidth + "x" + app.currentCookieHeight + sourceFileExtension;
+							saveDialog.currentFile = suggestedSaveFileName;
+							saveDialog.folder = app.lastSaveFolder;
 							saveDialog.open();
 						}
 					}
@@ -230,6 +242,7 @@ ApplicationWindow {
 				Layout.bottomMargin: 15
 				text: "Pick input image..."
 				onClicked: {
+					pickSourceDialog.folder = app.lastOpenFolder;
 					pickSourceDialog.open();
 				}
 			}
@@ -474,25 +487,25 @@ ApplicationWindow {
 	}
 	FileDialog {
 		id: pickSourceDialog
-		nameFilters: ["Bilder (*.jpg *.jpeg *.png *.bmp)"]
-		folder: shortcuts.pictures
-		selectExisting: true
+		nameFilters: ["Images (*.jpg *.jpeg *.png *.bmp)"]
+		fileMode:	FileDialog.OpenFile
 		onAccepted: {
-			app.currentImageSource = fileUrl;
+			app.currentImageSource = file;
+			app.lastOpenFolder = folder;
 		}
 	}
 	FileDialog {
 		id: saveDialog
-		nameFilters: ["Bilder (*.jpg *.jpeg *.png *.bmp)"]
-		folder: pickSourceDialog.folder
-		selectExisting: false
+		nameFilters: ["Images (*.jpg *.jpeg *.png *.bmp)"]
+		fileMode:	FileDialog.SaveFile
 		defaultSuffix: "jpg"
 		property double cookieX: 0;
 		property double cookieY: 0;
 		property double cookieW: 0;
 		property double cookieH: 0;
 		onAccepted: {
-			api.saveCookie(app.currentImageSource, fileUrl, cookieX, cookieY, cookieW, cookieH, app.useCustomOutputSize, app.customOutputWidth, app.customOutputHeight);
+			api.saveCookie(app.currentImageSource, file, cookieX, cookieY, cookieW, cookieH, app.useCustomOutputSize, app.customOutputWidth, app.customOutputHeight);
+			app.lastSaveFolder = folder;
 		}
 	}
 	Popup {

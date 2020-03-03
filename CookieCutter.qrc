@@ -4,5 +4,7 @@
         <file>qtquickcontrols2.conf</file>
         <file>help-24px.svg</file>
         <file>logo.png</file>
+        <file>arrow_forward-24px.svg</file>
+        <file>arrow_back-24px.svg</file>
     </qresource>
 </RCC>

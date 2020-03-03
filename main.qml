@@ -1,10 +1,9 @@
-import QtQuick 2.13
-import QtQuick.Window 2.13
-import QtQml 2.13
-import QtQuick.Controls 2.5
-import QtQuick.Layouts 1.3
-import QtQuick.Controls.Material 2.13
-//import QtQuick.Dialogs 1.3
+import QtQuick 2.14
+import QtQuick.Window 2.14
+import QtQml 2.14
+import QtQuick.Controls 2.14
+import QtQuick.Layouts 1.4
+import QtQuick.Controls.Material 2.14
 import Qt.labs.platform 1.1
 import Qt.labs.settings 1.0
 
@@ -234,6 +233,8 @@ ApplicationWindow {
 		}//Pane
 
 		ColumnLayout {
+			id: clSideMenu
+
 			Layout.fillHeight:		true
 			Layout.preferredWidth:	250
 			Layout.maximumWidth:	Layout.preferredWidth
@@ -266,6 +267,8 @@ ApplicationWindow {
 			}//Item
 
 			Button {
+				id: btnPickSourceImage
+
 				Layout.topMargin:		15
 				Layout.bottomMargin:	15
 				text:					qsTr("pick input image...")
@@ -691,5 +694,156 @@ ApplicationWindow {
 		property alias	windowPosX:				app.x
 		property alias	widnowPosY:				app.y
 	}
+
+// Tutorial popups
+
+	Popup {
+		id: popHint01
+
+		y:			(btnPickSourceImage.y + btnPickSourceImage.height / 2) - height / 2
+		x:			clSideMenu.x - 15 - width
+		visible:	true
+		clip:		true
+
+		RowLayout {
+			spacing:	0
+			anchors.fill:	parent
+
+			Label {
+				text:				qsTr("Step 1: Pick a source image to cut pieces from.")
+				wrapMode:			Text.Wrap
+				Layout.fillWidth:	true
+			}
+
+			ToolButton {
+				icon.source:	"qrc:/arrow_forward-24px.svg"
+				padding:		0
+			}
+		}//RowLayout
+	}//Popup
+
+	Popup {
+		id: popHint02
+
+		y:			cutterList.y
+		x:			clSideMenu.x - 15 - width
+		visible:	true
+		clip:		true
+
+		RowLayout {
+			spacing:	0
+			anchors.fill:	parent
+
+			Label {
+				text:				qsTr("Step 2: Choose a cookie cutout shape.")
+				wrapMode:			Text.Wrap
+				Layout.fillWidth:	true
+			}
+
+			ToolButton {
+				icon.source:	"qrc:/arrow_forward-24px.svg"
+				padding:		0
+			}
+		}//RowLayout
+	}//Popup
+
+	Popup {
+		id: popHint03
+
+		y:			cutterList.y + 80
+		x:			clSideMenu.x - 15 - width
+		visible:	true
+		clip:		true
+		width:		Math.min(btnStep3.implicitWidth + lblStep3.implicitWidth + 30, clSideMenu.x ) - 15;
+
+		RowLayout {
+			spacing:	0
+			anchors.fill:	parent
+
+			ToolButton {
+				id: btnStep3
+
+				icon.source:	"qrc:/arrow_back-24px.svg"
+				padding:		0
+			}
+
+			Label {
+				id: lblStep3
+
+				text:				qsTr("Step 3: Move mouse over the source image to aim.")
+				wrapMode:			Text.Wrap
+				Layout.fillWidth:	true
+			}
+		}//RowLayout
+	}//Popup
+
+	Popup {
+		id: popHint04
+
+		y:			cutterList.y + 160
+		x:			clSideMenu.x - 15 - width
+		visible:	true
+		clip:		true
+		width:		Math.min(btnStep4.implicitWidth + Math.max(lblStep4a.implicitWidth, lblStep4b.implicitWidth) + 30, clSideMenu.x ) - 15;
+
+		RowLayout {
+			spacing:	0
+			anchors.fill:	parent
+
+			ToolButton {
+				id: btnStep4
+
+				icon.source:	"qrc:/arrow_back-24px.svg"
+				padding:		0
+			}
+
+			ColumnLayout {
+				Label {
+					id: lblStep4a
+
+					text:				qsTr("Step 4: Use mouse wheel to change cutout size.")
+					wrapMode:			Text.Wrap
+					Layout.fillWidth:	true
+				}
+				Label {
+					id: lblStep4b
+
+					text:				qsTr("Hold shift while turning the mouse wheel for higher precision.")
+					wrapMode:			Text.Wrap
+					Layout.fillWidth:	true
+				}
+			}
+		}//RowLayout
+	}//Popup
+
+	Popup {
+		id: popHint05
+
+		y:			cutterList.y + 255
+		x:			clSideMenu.x - 15 - width
+		visible:	true
+		clip:		true
+		width:		Math.min(btnStep5.implicitWidth + lblStep5.implicitWidth + 30, clSideMenu.x ) - 15;
+
+		RowLayout {
+			spacing:		0
+			anchors.fill:	parent
+
+			ToolButton {
+				id: btnStep5
+
+				icon.source:	"qrc:/arrow_back-24px.svg"
+				padding:		0
+			}
+
+			Label {
+				id: lblStep5
+
+				text:		qsTr("Step 5: Click at the desired position to save your cutout to a new file.")
+				wrapMode:	Text.Wrap
+				Layout.fillWidth: true
+			}
+		}//RowLayout
+	}//Popup
 }//ApplicationWindow
 

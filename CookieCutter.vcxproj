@@ -45,10 +45,16 @@
     <QtInstall>Qt 5.14.0 64bit</QtInstall>
     <QtModules>core;gui;qml;quick;quickwidgets;quickcontrols2;widgets</QtModules>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>Qt 5.14.0 64bit</QtInstall>
     <QtModules>core;gui;qml;quick;quickwidgets;quickcontrols2;widgets</QtModules>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -90,6 +96,9 @@
     <ResourceCompile Include="CookieCutter.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CookieCutter.pri" />
+    <None Include="CookieCutter.pro" />
+    <None Include="CookieCutter_de.ts" />
     <None Include="main.qml" />
     <None Include="qtquickcontrols2.conf" />
   </ItemGroup>

@@ -23,6 +23,11 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CookieCutter.qrc">
@@ -35,6 +40,11 @@
   <ItemGroup>
     <None Include="main.qml" />
     <None Include="qtquickcontrols2.conf" />
+    <None Include="CookieCutter.pro" />
+    <None Include="CookieCutter.pri" />
+    <None Include="CookieCutter_de.ts">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

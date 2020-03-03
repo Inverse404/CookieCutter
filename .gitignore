@@ -348,3 +348,6 @@ moc_predefs.h
 
 qrc_CookieCutter.cpp
 /VC_redist.x64.exe
+
+# ignore translation binary files, generate them on build instead
+*.qm

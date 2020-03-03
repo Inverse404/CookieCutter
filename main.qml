@@ -40,6 +40,7 @@ ApplicationWindow {
 			if (Array.isArray(parsedCustomCookieShapes)) {
 				parsedCustomCookieShapes.forEach(addToCookieCutterList);
 			}
+			cutterList.currentIndex = 0;
 		}
 	}
 

@@ -17,9 +17,9 @@ public:
 	MyApi(MyApi const& other) : QObject() {};
 	Q_INVOKABLE void saveCookie(QString const& sourcePath, QString const& targetPath, int x, int y, int w, int h, bool rescale = false, int outW = 0, int outH = 0) {
 		QString localInPath = sourcePath;
-        localInPath.remove(REMOVE_FILE_PROTOCOL_PREFIX);
+		localInPath.remove(REMOVE_FILE_PROTOCOL_PREFIX);
 		QString localOutPath = targetPath;
-        localOutPath.remove(REMOVE_FILE_PROTOCOL_PREFIX);
+		localOutPath.remove(REMOVE_FILE_PROTOCOL_PREFIX);
 		QImage source(localInPath);
 		if (!source.isNull()) {
 			QImage cookie = source.copy(x, y ,w, h);

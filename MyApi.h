@@ -2,6 +2,10 @@
 #include <QObject>
 #include <QImage>
 #include <QUrl>
+#include <QFile>
+#include <QDebug>
+#include <QTextStream>
+#include <QDir>
 
 #ifdef Q_OS_WIN
 #define REMOVE_FILE_PROTOCOL_PREFIX "file:///"
@@ -31,6 +35,33 @@ public:
 				cookie.save(localOutPath);
 			}
 		}
+	}
+
+	QString loadCustomCookieShapes() {
+		QString	loadedCookieShapesDefinition{};
+		QDir	homeDir = QDir::home();
+		if (homeDir.mkpath(".config/CookieCutter")) {
+
+			QDir	configDir{ homeDir };
+			configDir.cd(".config/CookieCutter");
+			QString customCookieShapesDefinitionFilePath = configDir.absoluteFilePath("customCookieShapesDefinition.json");
+			QFile	customCookieShapesFile(customCookieShapesDefinitionFilePath);
+
+			if (!customCookieShapesFile.open(QFile::ReadOnly | QFile::Text)) {
+				qDebug() << "no custom cookies configuration file found";
+			}
+			else {
+				QTextStream customCookieShapesStream(&customCookieShapesFile);
+				customCookieShapesStream.setCodec("UTF-8");
+				loadedCookieShapesDefinition = customCookieShapesStream.readAll();
+				qDebug() << loadedCookieShapesDefinition;
+				customCookieShapesFile.close();
+			}
+		}
+		else {
+			qDebug() << "could not create/access config directory path";
+		}
+		return loadedCookieShapesDefinition;
 	}
 };
 Q_DECLARE_METATYPE(MyApi)

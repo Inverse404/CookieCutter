@@ -35,6 +35,25 @@ ApplicationWindow {
 	minimumHeight:	540
 	minimumWidth:	640
 
+	Component.onCompleted: {
+		if (customCookieShapesDefinition != "") {
+			var parsedCustomCookieShapes = JSON.parse(customCookieShapesDefinition);
+			if (Array.isArray(parsedCustomCookieShapes)) {
+				parsedCustomCookieShapes.forEach(addToCookieCutterList);
+			}
+		}
+	}
+
+	function addToCookieCutterList(item, index) {
+		if (item.hasOwnProperty("name")
+			&& item.hasOwnProperty("initialWidth")
+			&& item.hasOwnProperty("initialHeight")
+			&& item.hasOwnProperty("source")	
+			){
+			cookieCutters.insert(0, {"name": item.name, "initialWidth": item.initialWidth, "initialHeight": item.initialHeight, "source": item.source});
+		}
+	}
+	
 	function updateScaleFactorAdjustment() {
 		var initialCutterScaleFactor = Math.min(srcImg.width / app.currentCookieWidth / 2, srcImg.height / app.currentCookieHeight / 2); 
 		app.currentCutterScaleAdjust = app.currentCookieWidth * initialCutterScaleFactor;

@@ -8,6 +8,7 @@
 #include <QString>
 #include <QTranslator>
 #include <QDebug>
+#include <QVariant>
 #include "MyApi.h"
 
 
@@ -33,8 +34,11 @@ int main(int argc, char *argv[])
 	qRegisterMetaType<MyApi*>();
 	MyApi callMe{};
 
+	QString customCookieShapesDefinition = callMe.loadCustomCookieShapes();
+	
 	QQmlApplicationEngine		engine{&app};
 	engine.rootContext()->setContextProperty("api", &callMe);
+	engine.rootContext()->setContextProperty("customCookieShapesDefinition", customCookieShapesDefinition);
 
 	const QUrl url(QStringLiteral("qrc:/main.qml"));
 	QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

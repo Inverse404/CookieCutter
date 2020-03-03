@@ -42,12 +42,12 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <QtInstall>Qt 5.13</QtInstall>
+    <QtInstall>Qt 5.14.0 64bit</QtInstall>
     <QtModules>core;gui;qml;quick;quickwidgets;quickcontrols2;widgets</QtModules>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <QtInstall>Qt 5.13</QtInstall>
+    <QtInstall>Qt 5.14.0 64bit</QtInstall>
     <QtModules>core;gui;qml;quick;quickwidgets;quickcontrols2;widgets</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">

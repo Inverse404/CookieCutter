@@ -96,11 +96,13 @@
     <ResourceCompile Include="CookieCutter.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="compileTranslationFiles.bat" />
     <None Include="CookieCutter.pri" />
     <None Include="CookieCutter.pro" />
     <None Include="CookieCutter_de.ts" />
     <None Include="main.qml" />
     <None Include="qtquickcontrols2.conf" />
+    <None Include="updateTranslationFiles.bat" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MyApi.h" />

@@ -28,6 +28,9 @@
       <Extensions>ts</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Build Tools">
+      <UniqueIdentifier>{8848cbd3-79e0-4b84-9746-00f25f7f7dcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CookieCutter.qrc">
@@ -44,6 +47,12 @@
     <None Include="CookieCutter.pri" />
     <None Include="CookieCutter_de.ts">
       <Filter>Translation Files</Filter>
+    </None>
+    <None Include="compileTranslationFiles.bat">
+      <Filter>Build Tools</Filter>
+    </None>
+    <None Include="updateTranslationFiles.bat">
+      <Filter>Build Tools</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

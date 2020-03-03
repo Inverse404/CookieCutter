@@ -54,6 +54,9 @@
     <None Include="updateTranslationFiles.bat">
       <Filter>Build Tools</Filter>
     </None>
+    <None Include="deploy_win10_Qt5.14.0_x64.bat">
+      <Filter>Build Tools</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

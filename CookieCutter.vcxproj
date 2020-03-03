@@ -100,6 +100,7 @@
     <None Include="CookieCutter.pri" />
     <None Include="CookieCutter.pro" />
     <None Include="CookieCutter_de.ts" />
+    <None Include="deploy_win10_Qt5.14.0_x64.bat" />
     <None Include="main.qml" />
     <None Include="qtquickcontrols2.conf" />
     <None Include="updateTranslationFiles.bat" />

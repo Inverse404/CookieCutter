@@ -249,7 +249,7 @@ ApplicationWindow {
 			Button {
 				Layout.topMargin:		15
 				Layout.bottomMargin:	15
-				text:					"Pick input image..."
+				text:					qsTr("pick input image...")
 
 				onClicked: {
 					pickSourceDialog.folder = app.lastOpenFolder;
@@ -258,7 +258,7 @@ ApplicationWindow {
 			}//Button
 
 			Label {
-				text:		qsTr("Cookie shapes (%1)").arg(cookieCutters.count)
+				text:		qsTr("cookie shapes (%1)").arg(cookieCutters.count)
 				font.bold:	true
 			}
 
@@ -292,7 +292,7 @@ ApplicationWindow {
 					ItemDelegate {
 						id: cutterDel
 
-						text:	name + " (" + initialWidth + ":" + initialHeight + ")"
+						text:	qsTr(cookieCutters.get(index).name) + qsTr(" (%L1:%L2)" ).arg(initialWidth).arg(initialHeight)
 						width:	cutterList.width - sbCookieList.width
 
 						onClicked: {
@@ -301,98 +301,137 @@ ApplicationWindow {
 						}
 					}//ItemDelegate
 
+				section.property:			"source"
+				section.labelPositioning:	ViewSection.InlineLabels | ViewSection.CurrentLabelAtStart
+
+				section.delegate:
+					ItemDelegate {
+						id: sectionDel
+
+						text:		qsTr(section)
+						width:		cutterList.width - sbCookieList.width
+						font.bold:	true
+
+						background:
+							Rectangle {
+								anchors.fill:	parent
+								color:			Material.background
+
+								Rectangle {
+									width:			parent.width
+									height:			1
+									anchors.bottom:	parent.bottom
+								}
+							}//Rectangle
+					}//ItemDelegate
+
 				model:
 					ListModel {
 						id: cookieCutters
 
 						ListElement {
-							name:			qsTr("golden cut")
+							name:			QT_TR_NOOP("golden cut")
 							initialWidth:	1.0
 							initialHeight:	1.618
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("square")
+							name:			QT_TR_NOOP("square")
 							initialWidth:	1.0
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("univisium")
+							name:			QT_TR_NOOP("univisium")
 							initialWidth:	2.0
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("35mm film")
+							name:			QT_TR_NOOP("35mm film")
 							initialWidth:	3.0
 							initialHeight:	2.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("APS Panorama")
+							name:			QT_TR_NOOP("APS Panorama")
 							initialWidth:	3.0
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("legacy photo")
+							name:			QT_TR_NOOP("legacy photo")
 							initialWidth:	5.0
 							initialHeight:	4.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("legacy screen")
+							name:			QT_TR_NOOP("legacy screen")
 							initialWidth:	4.0
 							initialHeight:	3.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("digital screen")
+							name:			QT_TR_NOOP("digital screen")
 							initialWidth:	16.0
 							initialHeight:	9.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("digital screen")
+							name:			QT_TR_NOOP("digital screen")
 							initialWidth:	16.0
 							initialHeight:	10.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("mobile screen portrait")
+							name:			QT_TR_NOOP("mobile screen portrait")
 							initialWidth:	9.0
 							initialHeight:	16.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("widescreen film")
+							name:			QT_TR_NOOP("widescreen film")
 							initialWidth:	1.85
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("anamorphic film")
+							name:			QT_TR_NOOP("anamorphic film")
 							initialWidth:	2.35
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("anamorphic film")
+							name:			QT_TR_NOOP("anamorphic film")
 							initialWidth:	2.39
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("ultra panavision film")
+							name:			QT_TR_NOOP("ultra panavision film")
 							initialWidth:	2.75
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 
 						ListElement {
-							name:			qsTr("polyvision film")
+							name:			QT_TR_NOOP("polyvision film")
 							initialWidth:	4.0
 							initialHeight:	1.0
+							source:			QT_TR_NOOP("standard cookies")
 						}
 					}//ListModel
 			}//ListView

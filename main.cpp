@@ -6,6 +6,9 @@
 #include <QImage>
 #include <QObject>
 #include <QString>
+#include <QTranslator>
+#include <QDebug>
+#include <QVariant>
 #include "MyApi.h"
 
 
@@ -15,6 +18,14 @@ int main(int argc, char *argv[])
 	QGuiApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
 	QApplication app(argc, argv);
 
+	QTranslator translator;
+	if ( translator.load(QLocale(), QLatin1String("CookieCutter"), QLatin1String("_")) ) {
+		app.installTranslator(&translator);
+	}
+	else {
+		qDebug() << "cannot load translation for current locale: '" << QLocale::system().name() << "'... falling back to english version.";
+	}
+
 	app.setOrganizationName("NSSS");
 	app.setOrganizationDomain("computer-science.de");
 	app.setApplicationName("CookieCutter");
@@ -23,8 +34,11 @@ int main(int argc, char *argv[])
 	qRegisterMetaType<MyApi*>();
 	MyApi callMe{};
 
+	QString customCookieShapesDefinition = callMe.loadCustomCookieShapes();
+	
 	QQmlApplicationEngine		engine{&app};
 	engine.rootContext()->setContextProperty("api", &callMe);
+	engine.rootContext()->setContextProperty("customCookieShapesDefinition", customCookieShapesDefinition);
 
 	const QUrl url(QStringLiteral("qrc:/main.qml"));
 	QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

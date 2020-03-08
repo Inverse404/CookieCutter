@@ -42,13 +42,19 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <QtInstall>Qt 5.13</QtInstall>
+    <QtInstall>Qt 5.14.0 64bit</QtInstall>
     <QtModules>core;gui;qml;quick;quickwidgets;quickcontrols2;widgets</QtModules>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <QtInstall>Qt 5.13</QtInstall>
+    <QtInstall>Qt 5.14.0 64bit</QtInstall>
     <QtModules>core;gui;qml;quick;quickwidgets;quickcontrols2;widgets</QtModules>
+    <QtRunLUpdateOnBuild>true</QtRunLUpdateOnBuild>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -90,8 +96,14 @@
     <ResourceCompile Include="CookieCutter.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="compileTranslationFiles.bat" />
+    <None Include="CookieCutter.pri" />
+    <None Include="CookieCutter.pro" />
+    <None Include="CookieCutter_de.ts" />
+    <None Include="deploy_win10_Qt5.14.0_x64.bat" />
     <None Include="main.qml" />
     <None Include="qtquickcontrols2.conf" />
+    <None Include="updateTranslationFiles.bat" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MyApi.h" />

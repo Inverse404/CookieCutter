@@ -1,0 +1,25 @@
+[
+    {
+        "comment_remove_me1":
+        "This file demonstrates how to make a custom cookie shapes definition file.",
+        "comment_remove_me2":
+        "Place a custom file like this sample with the exact name 'customCookieShapesDefinition.json' in '~/.config/CookieCutter/'",
+
+        "name":             "entry 01",
+        "initialWidth":     184,
+        "initialHeight":    128,
+        "source":           "custom shape category 01"
+    },
+    {
+        "name":             "entry 02",
+        "initialWidth":     376,
+        "initialHeight":    391,
+        "source":           "custom shape category 01"
+    },
+    {
+        "name":             "entry 03",
+        "initialWidth":     376,
+        "initialHeight":    391,
+        "source":           "custom shape category 02"
+    }
+]

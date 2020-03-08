@@ -23,6 +23,14 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Build Tools">
+      <UniqueIdentifier>{8848cbd3-79e0-4b84-9746-00f25f7f7dcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CookieCutter.qrc">
@@ -35,6 +43,20 @@
   <ItemGroup>
     <None Include="main.qml" />
     <None Include="qtquickcontrols2.conf" />
+    <None Include="CookieCutter.pro" />
+    <None Include="CookieCutter.pri" />
+    <None Include="CookieCutter_de.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="compileTranslationFiles.bat">
+      <Filter>Build Tools</Filter>
+    </None>
+    <None Include="updateTranslationFiles.bat">
+      <Filter>Build Tools</Filter>
+    </None>
+    <None Include="deploy_win10_Qt5.14.0_x64.bat">
+      <Filter>Build Tools</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
